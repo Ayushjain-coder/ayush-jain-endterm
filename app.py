@@ -24,8 +24,8 @@ st.title("""
         Arithmetic Operations
          """
          )
-image1 = cv2.imread('img1.jpg') 
-image2 = cv2.imread('img2.jpg')
+image1 = cv2.imread('img1.PNG') 
+image2 = cv2.imread('img2.PNG')
 
 drop_down = 'Addition' #@param["Addition", "Subtraction"]
 
