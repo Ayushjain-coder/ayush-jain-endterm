@@ -45,7 +45,7 @@ def import_and_predict(image_data1, image_data2):
   st.image(image_data, use_column_width=True)
   return 0
 
-if file1 is None || file2 is None:
+if file1 is None or file2 is None:
   st.text("Please upload an Image file")
 else:
   file_bytes1 = np.asarray(bytearray(file.read()), dtype=np.uint8)
