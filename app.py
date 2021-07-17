@@ -31,7 +31,7 @@ from  PIL import Image, ImageOps
 image1 = cv2.imread('img1.PNG') 
 image2 = cv2.imread('img2.PNG')
 
-drop_down = st.selectbox('Select:',('Addition','Subtraction')
+drop_down = st.selectbox('Select:',('Addition','Subtraction'))
 
 def import_and_predict(image_data1, image_data2):
    
