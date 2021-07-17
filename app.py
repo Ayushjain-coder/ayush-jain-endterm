@@ -20,19 +20,44 @@ html_temp = """
    """
 st.markdown(html_temp,unsafe_allow_html=True)
 
-R = st.slider('R', min_value=0, max_value=255, step=1)
+st.title("""
+        Arithmetic Operations
+         """
+         )
+
+file1 = st.file_uploader("Please upload first image", type=("jpg", "png"))
+
+file2 = st.file_uploader("Please upload second image", type=("jpg", "png"))
+
+drop_down = 'Addition' #@param["Addition", "Subtraction"]
 
 import cv2
 from  PIL import Image, ImageOps
 
-image = np.ones((512,512,3), dtype = "uint8")*255
+def import_and_predict(image_data1, image_data2):
+   
+  if drop_down == "Addition":
+    image_data = cv.add(image_data1,image_data2)
 
-def import_and_predict(image_data): 
-  image_data[:] = [R]
+  if drop_down == "Subtraction":
+    image_data = cv.subtract(image_data1,image_data2)  
+
   st.image(image_data, use_column_width=True)
+  return 0
+
+if file1 is None || file2 is None:
+  st.text("Please upload an Image file")
+else:
+  file_bytes1 = np.asarray(bytearray(file.read()), dtype=np.uint8)
+  image1 = cv2.imdecode(file_bytes1, 1)
+
+  file_bytes2 = np.asarray(bytearray(file.read()), dtype=np.uint8)
+  image2 = cv2.imdecode(file_bytes2, 1)
+
+  st.image(file,caption='Uploaded Image.', use_column_width=True)
     
-if st.button("Change Color"):
-  result=import_and_predict(image)
+if st.button("Change Image"):
+  result=import_and_predict(image1,image2)
   
 if st.button("About"):
   st.header(" Ayush Jain")
