@@ -31,15 +31,15 @@ from  PIL import Image, ImageOps
 image1 = cv2.imread('img1.PNG') 
 image2 = cv2.imread('img2.PNG')
 
-drop_down = 'Addition' #@param["Addition", "Subtraction"]
+drop_down = st.selectbox('Select:',('Addition','Subtraction')
 
 def import_and_predict(image_data1, image_data2):
    
   if drop_down == "Addition":
-    image_data = cv.add(image_data1,image_data2)
+    image_data = cv2.add(image_data1,image_data2)
 
   if drop_down == "Subtraction":
-    image_data = cv.subtract(image_data1,image_data2)  
+    image_data = cv2.subtract(image_data1,image_data2)  
 
   st.image(image_data, use_column_width=True)
   return 0
