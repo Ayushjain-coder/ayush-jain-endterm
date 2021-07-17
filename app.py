@@ -24,10 +24,8 @@ st.title("""
         Arithmetic Operations
          """
          )
-
-file1 = st.file_uploader("Please upload first image", type=("jpg", "png"))
-
-file2 = st.file_uploader("Please upload second image", type=("jpg", "png"))
+image1 = cv2.imread('img1.jpg') 
+image2 = cv2.imread('img2.jpg')
 
 drop_down = 'Addition' #@param["Addition", "Subtraction"]
 
@@ -44,17 +42,6 @@ def import_and_predict(image_data1, image_data2):
 
   st.image(image_data, use_column_width=True)
   return 0
-
-if file1 is None or file2 is None:
-  st.text("Please upload an Image file")
-else:
-  file_bytes1 = np.asarray(bytearray(file.read()), dtype=np.uint8)
-  image1 = cv2.imdecode(file_bytes1, 1)
-
-  file_bytes2 = np.asarray(bytearray(file.read()), dtype=np.uint8)
-  image2 = cv2.imdecode(file_bytes2, 1)
-
-  st.image(file,caption='Uploaded Image.', use_column_width=True)
     
 if st.button("Change Image"):
   result=import_and_predict(image1,image2)
